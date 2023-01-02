@@ -7,90 +7,78 @@
 
 <h1 align="center">Day 01 Introduction</h1>
 
-<p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/m3pratik/day-01-introduction?color=56BEB8">
-
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/m3pratik/day-01-introduction?color=56BEB8">
-
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/m3pratik/day-01-introduction?color=56BEB8">
-
-  <img alt="License" src="https://img.shields.io/github/license/m3pratik/day-01-introduction?color=56BEB8">
-
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/m3pratik/day-01-introduction?color=56BEB8" /> -->
-
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/m3pratik/day-01-introduction?color=56BEB8" /> -->
-
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/m3pratik/day-01-introduction?color=56BEB8" /> -->
-</p>
-
-<!-- Status -->
-
-<!-- <h4 align="center"> 
-	🚧  Day 01 Introduction 🚀 Under construction...  🚧
-</h4> 
-
-<hr> -->
-
-<p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
-  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/m3pratik" target="_blank">Author</a>
-</p>
 
 <br>
 
 ## :dart: About ##
 
-Describe your project
+Introduction to EKS, and Configurations.
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: Installing CLI and connect with AWS;\
+:heavy_check_mark: Creating EKS Cluster and Node Groups;\
+:heavy_check_mark: Deleting Cluster and Node Groups;
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-
+- [AWS CLI](https://aws.amazon.com/cli/)
+- [kubectl - Kubernetes command-line tool](https://kubernetes.io/docs/tasks/tools/)
+- [eksctl - CLI for Amazon EKS ](https://eksctl.io/)
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+Before starting :checkered_flag:, you need to have an Active AWS Account and Basic understaing of Kubernetes concepts.
 
 ## :checkered_flag: Starting ##
 
-```bash
-# Clone this project
-$ git clone https://github.com/m3pratik/day-01-introduction
-
-# Access
-$ cd day-01-introduction
-
-# Install dependencies
-$ yarn
-
-# Run the project
-$ yarn start
-
-# The server will initialize in the <http://localhost:3000>
+## Install AWS CLI
+- Reference-1: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
+- Reference-2: https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+- Validate CLI installation.
 ```
+aws --version
+aws-cli/1.23.8 Python/3.9.10 Darwin/22.1.0 botocore/1.25.8
+
+which aws
+```
+### Configure AWS Command Line using Security Credentials
+- Login into AWS account
+- Serch for --> IAM in search bar.
+- Select the IAM User, Or create new one. Please make sure you never use Root user's Security credential(Not recommended)
+- Click on **Security credentials** tab
+- Click on **Create access key**
+- Copy Access ID and Secret access key
+- Go to command line and provide the required details
+```
+aws configure
+AWS Access Key ID [None]: paste your's
+AWS Secret Access Key [None]: paste your's
+Default region name [None]: ap-south-1
+Default output format [None]: json
+```
+- Test if AWS CLI is working after configuring the above
+```
+aws s3 ls
+```
+## Step-02: Install kubectl CLI
+- Reference: https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
+- Verify the kubectl client version
+```
+kubectl version --client
+```
+## Step-03: Install eksctl CLI
+## References:
+- https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html
+- https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
+
+# Verify eksctl version
+```eksctl version```
 
 ## :memo: License ##
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
-
-
-Made with :heart: by <a href="https://github.com/m3pratik" target="_blank">{{YOUR_NAME}}</a>
+Made with :heart: by <a href="https://github.com/m3pratik" target="_blank">{{Pratikkumar Panchal}}</a>
 
 &#xa0;
 
