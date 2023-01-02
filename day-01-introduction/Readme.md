@@ -34,7 +34,7 @@ Before starting :checkered_flag:, you need to have an Active AWS Account and Bas
 ## :checkered_flag: Starting ##
 
 # Part-1
-## Install AWS CLI
+## (1) Install AWS CLI
 - Reference-1: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
 - Reference-2: https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
 - Validate CLI installation.
@@ -44,7 +44,7 @@ aws-cli/1.23.8 Python/3.9.10 Darwin/22.1.0 botocore/1.25.8
 
 which aws
 ```
-### Configure AWS Command Line using Security Credentials
+## (2) Configure AWS Command Line using Security Credentials
 - Login into AWS account
 - Serch for --> IAM in search bar.
 - Select the IAM User, Or create new one. Please make sure you never use Root user's Security credential(Not recommended)
@@ -63,18 +63,18 @@ Default output format [None]: json
 ```
 aws s3 ls
 ```
-## Install kubectl CLI
+## (3) Install kubectl CLI
 - Reference: https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 - Verify the kubectl client version
 ```
 kubectl version --client
 ```
-## Install eksctl CLI
+## (4) Install eksctl CLI
 ## References:
 - https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html
 - https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
 
-## Verify eksctl version
+## (5) Verify eksctl version
 ```
 eksctl version
 ```
@@ -82,7 +82,7 @@ eksctl version
 ------
 # Part-2
 
-## Create EKS Cluster using eksctl
+## (1) Create EKS Cluster using eksctl
 - It will take few minutes to create the Cluster Control Plane 
 ```
 # Create Cluster
@@ -95,7 +95,7 @@ eksctl create cluster --name=demoeks \
 eksctl get cluster                  
 ```
 
-## Creating OpenID Connect (OIDC) identity providers.
+## (2) Creating OpenID Connect (OIDC) identity providers.
 ### References:
 - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html
 ```
@@ -105,7 +105,7 @@ eksctl utils associate-iam-oidc-provider \
     --approve
 ```
 
-## Create Public Node Group
+## (3) Create Public Node Group
 ```
 eksctl create nodegroup --cluster=demoeks \
                         --region=ap-south-1 \
@@ -123,7 +123,7 @@ eksctl create nodegroup --cluster=demoeks \
                         --alb-ingress-access 
 ```
 
-### Verify Cluster & Nodes
+## (4) Verify Cluster & Nodes
 ```
 # List Nodes in current kubernetes cluster
 kubectl get nodes -o wide
@@ -134,6 +134,7 @@ kubectl config view --minify
 
 ------
 # Part-3
+
 ## Deleting Cluster & Node Groups
 
 ### Delete Node Group
