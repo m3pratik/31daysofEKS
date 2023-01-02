@@ -105,8 +105,7 @@ eksctl utils associate-iam-oidc-provider \
     --approve
 ```
 
-## Create Node Group with additional Add-Ons in Public Subnets
-# Create Public Node Group
+## Create Public Node Group
 ```
 eksctl create nodegroup --cluster=demoeks \
                         --region=ap-south-1 \
@@ -124,7 +123,7 @@ eksctl create nodegroup --cluster=demoeks \
                         --alb-ingress-access 
 ```
 
-## Verify Cluster & Nodes
+### Verify Cluster & Nodes
 ```
 # List Nodes in current kubernetes cluster
 kubectl get nodes -o wide
@@ -134,10 +133,10 @@ kubectl config view --minify
 ```
 
 ------
-#Part-3
+# Part-3
 ## Deleting Cluster & Node Groups
 
-## Delete Node Group
+### Delete Node Group
 - We can delete a nodegroup separately using below `eksctl delete nodegroup`
 ```
 # List EKS Clusters
@@ -150,7 +149,7 @@ eksctl get nodegroup --cluster=demoeks
 eksctl delete nodegroup --cluster=eksdemo1 --name=demoeks-ng-1
 ```
 
-## Delete Cluster  
+### Delete Cluster  
 - We can delete cluster using `eksctl delete cluster`
 ```
 # Delete Cluster
