@@ -107,6 +107,7 @@ eksctl utils associate-iam-oidc-provider \
 
 ## Create Node Group with additional Add-Ons in Public Subnets
 # Create Public Node Group
+```
 eksctl create nodegroup --cluster=demoeks \
                         --region=ap-south-1 \
                         --name=demoeks-ng- \
