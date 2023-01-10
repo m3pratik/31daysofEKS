@@ -24,6 +24,3 @@
 
 Made with :heart: by <a href="https://github.com/m3pratik" target="_blank">Pratikkumar Panchal</a>
 
-&#xa0;
-
-<a href="#top">Back to top</a>
