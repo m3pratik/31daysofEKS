@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  strategy:
+    type: Recreate 
+  template: 
+    metadata: 
+      labels: 
+        app: postgres
+    spec: 
+      containers:
+        - name: postgres
+          image: postgres:10.4
+          env:
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: postgres123
+            - name: PGDATA
+              value: /var/lib/postgresql/data/rails-crud/
+          ports:
+            - containerPort: 5432
+              name: postgres    
+          volumeMounts:
+            - name: postgres-persistent-storage
+              mountPath: /var/lib/postgresql/data/
+            - name: usermanagement-dbcreation-script
+              mountPath: /docker-entrypoint-initdb.d #https://hub.docker.com/_/postgres Refer Initializing a fresh instance                                            
+      volumes: 
+        - name: postgres-persistent-storage
+          persistentVolumeClaim:
+            claimName: ebs-postgres-pv-claim
+        - name: usermanagement-dbcreation-script
+          configMap:
+            name: usermanagement-dbcreation-script
+            
