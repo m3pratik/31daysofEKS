@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: rails-crud-microservice
+  labels:
+    app: rails-crud
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rails-crud
+  template:  
+    metadata:
+      labels: 
+        app: rails-crud
+    spec:
+      containers:
+        - name: rails-crud
+          image: 943874580445.dkr.ecr.us-east-1.amazonaws.com/crud:v2 # replace this image with your uploaded Image
+          ports: 
+            - containerPort: 3000           
+          env:
+            - name: POSTGRES_HOST   # this type of env declaration is not recommanded for production usecase
+              value: "postgres"                       
+            - name: POSTGRES_USER
+              value: "postgres"            
+            - name: POSTGRES_PASSWORD
+              value: "postgres123"
