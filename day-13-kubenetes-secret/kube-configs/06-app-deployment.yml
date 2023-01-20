@@ -20,7 +20,7 @@ spec:
           ports: 
             - containerPort: 3000           
           env:
-            - name: POSTGRES_USER
+            - name: POSTGRES_USER  # this value will be get from secret we created.
               valueFrom:
                 secretKeyRef:
                   name: postgres-db-envs
