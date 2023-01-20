@@ -93,7 +93,6 @@ As you can see in the above file, Because Secrets can be created independently o
 
 Made with ❤️ by [**Pratikkumar Panchal**](https://www.linkedin.com/in/m3pratik/). [**https://github.com/m3pratik/31daysofEKS**](https://github.com/m3pratik/31daysofEKS)
 
-Made with :heart: by <a href="https://www.linkedin.com/in/m3pratik/" target="_blank">Pratikkumar Panchal</a>
 
 &#xa0;
 
