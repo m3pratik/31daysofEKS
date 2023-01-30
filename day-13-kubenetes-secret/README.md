@@ -5,7 +5,7 @@
 
 </div>
 
-<h1 align="center">Day 12 Deploy App use EKS Volume-based DB.</h1>
+<h1 align="center">Day 13 Kubernetes Secrets.</h1>
 
 
 <br>
