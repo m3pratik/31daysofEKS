@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: rails-crud-microservice
+  labels:
+    app: rails-crud
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rails-crud
+  template:  
+    metadata:
+      labels: 
+        app: rails-crud
+    spec:
+     initContainers:
+        - name: init-db
+          image: busybox:1.31
+          command: ['sh', '-c', 'echo -e "Checking for the availability DB"; while ! nc -z postgres 5432; do sleep 1; printf "-"; done; echo -e "  >> Postgres DB Server has started";']
+      
+      containers:
+        - name: rails-crud
+          image: 943874580445.dkr.ecr.us-east-1.amazonaws.com/crud:v2 # replace this image with your uploaded Image
+          ports: 
+            - containerPort: 3000           
+          env:
+            - name: POSTGRES_USER  # this value will be get from secret we created.
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-db-envs
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-db-envs
+                  key: POSTGRES_PASSWORD         
+            - name: POSTGRES_PASSWORD
+              value: "postgres123"
+          readinessProbe:
+            httpGet:
+              path: /login
+              port: 3000
+            initialDelaySeconds: 60
+            periodSeconds: 10   
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - curl localhost:3000
+            initialDelaySeconds: 60
+            periodSeconds: 10
