@@ -35,8 +35,6 @@ spec:
                 secretKeyRef:
                   name: postgres-db-envs
                   key: POSTGRES_PASSWORD         
-            - name: POSTGRES_PASSWORD
-              value: "postgres123"
           livenessProbe:
             exec:
               command:
